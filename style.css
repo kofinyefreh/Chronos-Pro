@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Default styling for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: none;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #000000;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  width: 80rem;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow-y: hidden;
+}
+
+/* Left panel styling */
+.left-panel {
+  width: 18rem;
+  height: 100%;
+  background-color: #dbdbdb;
+  padding: 0 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.left-panel .title {
+  font-size: 2.5rem;
+  padding-top: 2rem;
+  font-weight: 250;
+}
+.left-panel .title span {
+  color: #435bff;
+  font-weight: 250;
+}
+
+.left-panel .categories {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 23rem;
+  overflow-y: auto;
+  font-weight: 500;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #333333;
+}
+
+.left-panel .categories .item {
+  padding: 0.7rem 1.4rem;
+  transition: all 0.3s;
+}
+
+.left-panel .categories .item:hover {
+  background-color: #c5c5c5;
+  border-radius: 8px;
+  /* color: white; */
+}
+
+.left-panel .add-list-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  background-color: #435bff;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.left-panel .theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.2rem;
+  margin-bottom: 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+}
