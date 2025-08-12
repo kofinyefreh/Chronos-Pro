@@ -17,14 +17,14 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #000000;
+  /* background-color: #000000; */
 }
 
 main {
   display: flex;
   flex-direction: row;
-  width: 80rem;
-  background-color: #e0e0e0;
+  /* width: 80rem; */
+  background-color: #f5f5f5;
   border-radius: 10px;
   overflow-y: hidden;
 }
@@ -33,7 +33,7 @@ main {
 .left-panel {
   width: 18rem;
   height: 100%;
-  background-color: #dbdbdb;
+  background-color: #eeeeee;
   padding: 0 2rem;
   overflow-y: auto;
   display: flex;
@@ -74,28 +74,166 @@ main {
 .left-panel .categories .item:hover {
   background-color: #c5c5c5;
   border-radius: 8px;
-  /* color: white; */
 }
 
 .left-panel .add-list-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 0.8rem 1.6rem;
   background-color: #435bff;
   color: #ffffff;
   border-radius: 8px;
   cursor: pointer;
   margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-.left-panel .theme-toggle {
+.left-panel .add-list-btn:hover {
+  background-color: #7789ff;
+  transition: all 0.3s;
+}
+
+/* Right pannel */
+.right-panel {
+  width: 50rem;
+  padding: 2rem;
+  /* background: red; */
+}
+.right-panel .top-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  /* background: blue; */
+}
+
+.right-panel .tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 29rem;
+}
+.right-panel .tabs .tab {
+  padding: 0.2rem 1rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font: #333;
+  cursor: pointer;
+  border: 2px solid #c5c5c5;
+  font-weight: 400;
+  border-radius: 15px;
+}
+.right-panel .tabs .tab:hover {
+  background-color: #c5c5c5;
+  transition: all 0.3s;
+}
+
+.right-panel .add-task-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 1.2rem;
-  margin-bottom: 1rem;
-  background-color: #ffffff;
-  border-radius: 8px;
+  width: 6.7rem;
+  font: 1rem;
   cursor: pointer;
+}
+.right-panel .add-task-btn span {
+  color: #fff;
+  background: #435bff;
+  border: 1px solid #435bff;
+  border-radius: 100%;
+  text-align: center;
+  padding: 5px;
+  transition: all;
+}
+
+.right-panel .add-task-btn p {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #435bff;
+  transition: all 0.3s;
+}
+
+.add-task-btn:hover span {
+  background-color: #7789ff;
+  border-color: #7789ff;
+}
+
+.add-task-btn:hover p {
+  color: #7789ff;
+}
+
+/* display tasks styling */
+.right-panel .display--tasks {
+  border: 1px solid #c5c5c5;
+  border-radius: 10px;
+  margin-top: 2rem;
+  height: 30rem;
+  overflow-y: scroll;
+}
+
+.right-panel .display--tasks .task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  padding: 1.5rem 1.5rem;
+}
+.right-panel .display--tasks .task--1 {
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.right-panel .task-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  font-size: 1.1rem;
+}
+
+.right-panel .task-open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  display: none;
+}
+
+.right-panel .task-description {
+  font-size: 0.95rem;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.right-panel .options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  padding: 0 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.right-panel .options i {
+  color: #686868;
+  transition: all 0.3s;
+}
+
+.right-panel .options i:first-child:hover {
+  color: blue;
+}
+
+.right-panel .options i:last-child:hover {
+  color: rgb(187, 0, 0);
+}
+
+.right-panel .date {
+  color: #686868;
+  font-size: 0.85rem;
 }
