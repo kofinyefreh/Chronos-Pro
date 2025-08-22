@@ -154,7 +154,7 @@ main {
   border-radius: 15px;
 }
 
-.right-panel .add-task-btn {
+.right-panel .task-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -162,7 +162,7 @@ main {
   font: 1rem;
   cursor: pointer;
 }
-.right-panel .add-task-btn span {
+.right-panel .task-btn span {
   color: #fff;
   background: #435bff;
   border: 1px solid #435bff;
@@ -172,19 +172,19 @@ main {
   transition: all;
 }
 
-.right-panel .add-task-btn p {
+.right-panel .task-btn p {
   font-weight: 500;
   font-size: 0.95rem;
   color: #435bff;
   transition: all 0.3s;
 }
 
-.add-task-btn:hover span {
+.task-btn:hover span {
   background-color: #7789ff;
   border-color: #7789ff;
 }
 
-.add-task-btn:hover p {
+.task-btn:hover p {
   color: #7789ff;
 }
 

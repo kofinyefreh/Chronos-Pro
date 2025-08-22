@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////
 //  Selectors
 const listBtn = document.querySelector('.list-btn');
-const taskBtn = document.querySelector('.add-task-btn');
+const taskBtn = document.querySelector('.task-btn');
 const modalList = document.querySelector('.add-list-item-modal');
 const modalTask = document.querySelector('.add-task-item-modal');
 const overlay1 = document.querySelector('.overlay1');
@@ -11,9 +11,15 @@ const overlay2 = document.querySelector('.overlay2');
 const closeIcon1 = document.querySelector('.close1');
 const closeIcon2 = document.querySelector('.close2');
 const listInput = document.querySelector('.list--input');
-const taskInput = document.querySelector('.task--input');
+const taskInputTitle = document.querySelector('.task--input--title');
+const taskInputDescription = document.querySelector(
+  '.task--input--description'
+);
 const addListBtn = document.querySelector('.add-list-btn');
+const addTaskBtn = document.querySelector('.add-task-btn');
 const caution1 = document.querySelector('.caution1');
+const caution2 = document.querySelector('.caution2');
+const caution3 = document.querySelector('.caution3');
 const listItem = document.querySelector('.item');
 const listCategories = document.querySelector('.categories');
 
@@ -51,6 +57,7 @@ const lists = [
 
 // Categories clicked state
 let clicked = document.querySelector('.item--0');
+const none = 'none';
 
 /////////////////////////////////////////////////////////////
 // Global Functions
@@ -74,35 +81,6 @@ const keyCloseModal = function (e, modalType, overlayType) {
     overlayType.classList.add(hidden);
   }
 };
-
-// Modal list event handlers
-listBtn.addEventListener('click', function (e) {
-  openModal(e, modalList, overlay1, listInput);
-});
-overlay1.addEventListener('click', function (e) {
-  closeModal(e, modalList, overlay1);
-});
-closeIcon1.addEventListener('click', function (e) {
-  closeModal(e, modalList, overlay1);
-});
-document.addEventListener('keydown', function (e) {
-  keyCloseModal(e, modalList, overlay1);
-});
-
-// task modal
-taskBtn.addEventListener('click', function (e) {
-  openModal(e, modalTask, overlay2, taskInput);
-});
-overlay2.addEventListener('click', function (e) {
-  closeModal(e, modalTask, overlay2);
-});
-closeIcon2.addEventListener('click', function (e) {
-  closeModal(e, modalTask, overlay2);
-});
-
-document.addEventListener('keydown', function (e) {
-  keyCloseModal(e, modalTask, overlay2);
-});
 
 // Capitalize first letters
 const capitalize = function (word) {
@@ -136,7 +114,7 @@ const checkTextValid = function (
     buttonType.disabled = true;
     buttonType.classList.remove('good');
   } else {
-    cautionType.textContent = 'Valid List Name';
+    cautionType.textContent = 'Valid Text';
     cautionType.style.color = 'green';
     buttonType.disabled = false;
     buttonType.classList.add('good');
@@ -144,6 +122,35 @@ const checkTextValid = function (
 };
 
 /////////////////////////////////////////////////////////////
+// Modal list event handlers
+listBtn.addEventListener('click', function (e) {
+  openModal(e, modalList, overlay1, listInput);
+});
+overlay1.addEventListener('click', function (e) {
+  closeModal(e, modalList, overlay1);
+});
+closeIcon1.addEventListener('click', function (e) {
+  closeModal(e, modalList, overlay1);
+});
+document.addEventListener('keydown', function (e) {
+  keyCloseModal(e, modalList, overlay1);
+});
+
+// task modal
+taskBtn.addEventListener('click', function (e) {
+  openModal(e, modalTask, overlay2, taskInputTitle);
+});
+overlay2.addEventListener('click', function (e) {
+  closeModal(e, modalTask, overlay2);
+});
+closeIcon2.addEventListener('click', function (e) {
+  closeModal(e, modalTask, overlay2);
+});
+
+document.addEventListener('keydown', function (e) {
+  keyCloseModal(e, modalTask, overlay2);
+});
+
 // Rendering lists on the UI
 
 const renderlists = function () {
@@ -169,7 +176,6 @@ const renderlists = function () {
 renderlists();
 
 // Add List input modal styling and logic
-
 listInput.addEventListener('input', function (e) {
   checkTextValid(e, caution1, addListBtn, 1, 18);
 });
@@ -208,9 +214,38 @@ addListBtn.addEventListener('click', function (e) {
   renderlists();
 });
 
+// Seleting list type
 listCategories.addEventListener('click', function (e) {
   const allLists = document.querySelectorAll('.item');
   [...allLists].forEach(item => item.classList.remove('selected'));
   e.target.classList.add('selected');
   clicked = e.target;
+});
+
+// Add Task caution text and button events
+taskInputTitle.addEventListener('input', function (e) {
+  const value = e.target.value.trim();
+  if (value.length === 0 || value.length > 50) {
+    caution2.textContent = `Input should be greater than ${1} but not more than ${50} characters`;
+    caution2.style.color = 'rgb(255, 107, 107)';
+    taskInputDescription.disabled = true;
+    addTaskBtn.disabled = true;
+    addTaskBtn.classList.remove('good');
+  } else {
+    caution2.textContent = 'Valid Text';
+    caution2.style.color = 'green';
+    taskInputDescription.disabled = false;
+  }
+  if (
+    taskInputDescription.value.length >= 1 &&
+    taskInputDescription.value.length <= 300 &&
+    value.length > 0
+  ) {
+    addTaskBtn.disabled = false;
+    addTaskBtn.classList.add('good');
+  }
+});
+
+taskInputDescription.addEventListener('input', function (e) {
+  checkTextValid(e, caution3, addTaskBtn, 1, 18);
 });
