@@ -60,6 +60,7 @@ main {
   gap: 0.5rem;
   height: 23rem;
   overflow-y: auto;
+  scrollbar-width: thin;
   font-weight: 500;
   font-size: 0.8rem;
   cursor: pointer;
@@ -72,7 +73,12 @@ main {
 }
 
 .left-panel .categories .item:hover {
-  background-color: #c5c5c5;
+  background-color: #dbdbdb;
+  border-radius: 8px;
+}
+
+.left-panel .categories .item.selected {
+  background-color: #dbdbdb;
   border-radius: 8px;
 }
 
@@ -88,6 +94,22 @@ main {
 }
 
 .left-panel .add-list-btn:hover {
+  background-color: #7789ff;
+  transition: all 0.3s;
+}
+
+.left-panel .list-btn {
+  padding: 0.8rem 1.6rem;
+  background-color: #435bff;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.left-panel .list-btn:hover {
   background-color: #7789ff;
   transition: all 0.3s;
 }
@@ -123,8 +145,13 @@ main {
   border-radius: 15px;
 }
 .right-panel .tabs .tab:hover {
-  background-color: #c5c5c5;
+  background-color: #dbdbdb;
   transition: all 0.3s;
+}
+
+.right-panel .tabs .tab.selected {
+  background-color: #dbdbdb;
+  border-radius: 15px;
 }
 
 .right-panel .add-task-btn {
@@ -164,10 +191,10 @@ main {
 /* display tasks styling */
 .right-panel .display--tasks {
   border: 1px solid #c5c5c5;
-  border-radius: 10px;
   margin-top: 2rem;
   height: 30rem;
   overflow-y: scroll;
+  scrollbar-width: thin;
 }
 
 .right-panel .display--tasks .task {
@@ -191,46 +218,51 @@ main {
 
 .right-panel .task-open {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  display: none;
+  /* display: none; */
 }
 
 .right-panel .task-description {
   font-size: 0.95rem;
   padding-left: 1.5rem;
-  padding-bottom: 1rem;
   font-weight: 400;
   line-height: 1.5;
+  padding-bottom: 1rem;
 }
 
 .right-panel .options {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  height: 3rem;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
-  padding: 0 0.5rem;
-  border-radius: 10px;
+  justify-content: space-around;
+  margin-bottom: 0.5rem;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 0.85rem;
+  width: 94%;
 }
-
-.right-panel .options i {
+.right-panel .options .button {
+  border: 1px solid #686868;
+  padding: 0.3rem 4rem;
+  border-radius: 500px;
   color: #686868;
-  transition: all 0.3s;
 }
 
-.right-panel .options i:first-child:hover {
-  color: blue;
+.right-panel .options .edit:hover {
+  background-color: #92a1ff;
+  color: #333;
 }
 
-.right-panel .options i:last-child:hover {
-  color: rgb(187, 0, 0);
+.right-panel .options .archive:hover {
+  background-color: #dbdbdb;
+  color: #333;
+}
+
+.right-panel .options .delete:hover {
+  background-color: rgb(255, 130, 130);
+  color: #333;
 }
 
 .right-panel .date {
@@ -245,23 +277,28 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 100;
+}
+
+.hidden {
   display: none;
 }
 
-.modal-content {
+.modal-list-content {
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 10px;
   width: 30rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: relative;
+  z-index: 1000;
 }
 
-.modal-content span {
+.modal-list-content span {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -270,14 +307,111 @@ main {
   color: #333;
 }
 
-.modal-content h2 {
+.modal-list-content h2 {
   text-align: center;
   margin-bottom: 1rem;
   font-size: 1.5rem;
   color: #333333;
 }
 
-.modal-content input {
+.modal-list-content input {
+  outline: none;
+  width: 100%;
+  padding: 0.2rem;
+  border: none;
+  border-bottom: 1px solid #c5c5c5;
+  font-size: medium;
+}
+
+.modal-list-content input:focus {
+  border-bottom: 1px solid #7789ff;
+}
+.modal-list-content .add-list-btn {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: #686868;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-list-content .good {
+  background-color: #435bff;
+}
+.modal-list-content .good:hover {
+  background-color: #7789ff;
+}
+
+.modal-list-content .caution {
+  font-size: 10px;
+  margin-bottom: 1rem;
+  padding-left: 0.2rem;
+  color: rgb(255, 107, 107);
+}
+
+.overlay1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  transition: all 0.5s;
+}
+/* add new task modal styling */
+.add-task-item-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-task-content {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 30rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+}
+.modal-task-content span {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #333;
+}
+.modal-task-content h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333333;
+}
+
+.modal-task-content .inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-task-content input {
   outline: none;
   width: 100%;
   padding: 0.5rem;
@@ -286,21 +420,50 @@ main {
   margin-bottom: 1rem;
   font-size: medium;
 }
-
-.modal-content input:focus {
+.modal-task-content input:focus {
   border-bottom: 1px solid #7789ff;
 }
-.modal-content .add-list-btn {
+.modal-task-content textarea {
+  outline: none;
+  width: 100%;
+  padding: 0.5rem;
+  border-bottom: 1px solid #c5c5c5;
+  border-radius: 5px;
+  font-size: medium;
+}
+
+.modal-task-content textarea:focus {
+  border: 1px solid #7789ff;
+}
+
+.modal-task-content .add-task-btn {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
   background-color: #435bff;
   color: #ffffff;
+  margin-top: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
 }
-.modal-content .add-list-btn:hover {
+
+.modal-task-content .good {
+  background-color: #435bff;
+}
+.modal-task-content .good:hover {
   background-color: #7789ff;
+}
+
+.overlay2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 100;
+  transition: all 0.5s;
 }

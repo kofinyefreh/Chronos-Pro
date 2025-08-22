@@ -16,7 +16,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <main>
@@ -24,22 +24,11 @@
       <section class="left-panel">
         <h1 class="title">Chronos <span>Plus</span></h1>
         <div class="categories">
-          <h3 class="item item--1">All Lists</h3>
-          <h3 class="item item--2">Personal</h3>
-          <h3 class="item item--3">Work</h3>
-          <h3 class="item item--4">School</h3>
-          <h3 class="item item--5">Family</h3>
-          <h3 class="item item--6">Groceries</h3>
-          <h3 class="item item--6">Groceries</h3>
-          <h3 class="item item--6">Groceries</h3>
-          <h3 class="item item--6">Groceries</h3>
-          <h3 class="item item--6">Groceries</h3>
-          <h3 class="item item--6">Groceries</h3>
-          <h3 class="item item--6">Groceries</h3>
+          <h3 class="item item--0 selected">All Lists</h3>
         </div>
 
         <!-- Button to add new list -->
-        <div class="add-list-btn">
+        <div class="list-btn">
           <p>Add New List +</p>
         </div>
       </section>
@@ -50,7 +39,7 @@
           <!-- Tasks tabs section -->
           <div class="top-section">
             <div class="tabs">
-              <p class="tab tab-all">All Tasks</p>
+              <p class="tab tab-all selected">All Tasks</p>
               <p class="tab tab-all">Pending</p>
               <p class="tab tab-all">Completed</p>
               <p class="tab tab-all">Archived</p>
@@ -77,128 +66,51 @@
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse 
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse 
                 </p>
+                <!-- option buttons -->
                 <div class="options">
-                    <i class="fa-regular fa-pen-to-square" title="Edit Task"></i >
-                    <i class="fa-solid fa-trash-can" title="Delete Task"></i>
+                  <div class="button edit">
+                    <p>Edit                     <i class="fa-regular fa-pen-to-square" title="Edit Task"></i ></p>
+                  </div>
+                  <div class="button archive">
+                    <p>Archive                     <i class="fa-solid fa-box-archive"></i></p>
+                  </div>
+                  <div class="button delete">
+                    <p>Delete                     <i class="fa-solid fa-trash"></i></p>
+                  </div>
                 </div>
             </div>
           </div>
 
-            <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">11/08/2025</div>
-              </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?
-                </p>
-            </div>
-          </div>
-
-                      <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">Today</div>
-              </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?
-                </p>
-            </div>
-          </div>
-
-                      <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">Today</div>
-              </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?
-                </p>
-            </div>
-          </div>
-
-                      <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">Today</div>
-              </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?
-                </p>
-            </div>
-          </div>
-
-                      <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">Today</div>
-              </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?
-                </p>
-            </div>
-          </div>
-
-                      <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">Today</div>
-              </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?
-                </p>
-            </div>
-          </div>
-
-                      <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">Today</div>
-              </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?
-                </p>
-            </div>
-          </div>
         </div>
       </section>
 
-      <!-- Adding new list -->
-      <section class="add-list-item-modal">
-        <div class="modal-content">
+      <!-- Adding new list modal window -->
+      <section class="add-list-item-modal hidden">
+        <div class="modal-list-content">
           <h2>Add New List</h2>
-          <span><i class="fa-regular fa-circle-xmark"></i></span>
-          <input type="text" placeholder="Enter list name" />
-          <button class="add-list-btn">Add List</button>
+          <span><i class="fa-regular fa-circle-xmark close1"></i></span>
+<form action="">
+                        <input class="list--input" type="text" placeholder="Enter list name"  />
+                        <p class="caution">List name should be greater than 1 but not more than 15 characters</p>
+
+          <button class="add-list-btn" disabled >Add List</button>
+</form>
         </div>
+        <div class="overlay1 hidden"></div>
+      </section>
+
+            <!-- Adding new task modal window -->
+                   <section class="add-task-item-modal hidden">
+        <div class="modal-task-content">
+          <h2>Add New Task</h2>
+          <span><i class="fa-regular fa-circle-xmark close2"></i></span>
+          <div class="inputs">
+                      <input class="task--input" type="text" placeholder="Enter task title" />
+          <textarea type="text" placeholder="Enter task description" rows="5"></textarea>
+          </div>
+          <button class="add-task-btn good">Add List</button>
+        </div>
+                <div class="overlay2"></div>
       </section>
     </main>
   </body>
