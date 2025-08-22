@@ -91,7 +91,7 @@
           <span><i class="fa-regular fa-circle-xmark close1"></i></span>
 <form action="">
                         <input class="list--input" type="text" placeholder="Enter list name"  />
-                        <p class="caution">List name should be greater than 1 but not more than 15 characters</p>
+                        <p class="caution1">Input should be greater than 1 but not more than 18 characters</p>
 
           <button class="add-list-btn" disabled >Add List</button>
 </form>
@@ -105,10 +105,16 @@
           <h2>Add New Task</h2>
           <span><i class="fa-regular fa-circle-xmark close2"></i></span>
           <div class="inputs">
-                      <input class="task--input" type="text" placeholder="Enter task title" />
-          <textarea type="text" placeholder="Enter task description" rows="5"></textarea>
+            <div>
+                <input class="task--input" type="text" placeholder="Enter task title" />
+                <p class="caution2">Input should be greater than 1 but not more than 30 characters</p>
+            </div>
+            <div >
+              <textarea type="text" placeholder="Enter task description" rows="10"></textarea>
+              <p class="caution3">Input should be greater than 1 but not more than 300 characters</p>
           </div>
-          <button class="add-task-btn good">Add List</button>
+            </div>
+          <button class="add-task-btn disabled">Add List</button>
         </div>
                 <div class="overlay2"></div>
       </section>

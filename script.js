@@ -13,7 +13,7 @@ const closeIcon2 = document.querySelector('.close2');
 const listInput = document.querySelector('.list--input');
 const taskInput = document.querySelector('.task--input');
 const addListBtn = document.querySelector('.add-list-btn');
-const caution = document.querySelector('.caution');
+const caution1 = document.querySelector('.caution1');
 const listItem = document.querySelector('.item');
 const listCategories = document.querySelector('.categories');
 
@@ -121,6 +121,28 @@ const capitalize = function (word) {
   }
 };
 
+// Check input validity function
+const checkTextValid = function (
+  e,
+  cautionType,
+  buttonType,
+  beginValue,
+  endValue
+) {
+  const value = e.target.value.trim();
+  if (value.length === 0 || value.length > endValue) {
+    cautionType.textContent = `Input should be greater than ${beginValue} but not more than ${endValue} characters`;
+    cautionType.style.color = 'rgb(255, 107, 107)';
+    buttonType.disabled = true;
+    buttonType.classList.remove('good');
+  } else {
+    cautionType.textContent = 'Valid List Name';
+    cautionType.style.color = 'green';
+    buttonType.disabled = false;
+    buttonType.classList.add('good');
+  }
+};
+
 /////////////////////////////////////////////////////////////
 // Rendering lists on the UI
 
@@ -147,20 +169,9 @@ const renderlists = function () {
 renderlists();
 
 // Add List input modal styling and logic
+
 listInput.addEventListener('input', function (e) {
-  const value = e.target.value.trim();
-  if (value.length === 0 || value.length > 18) {
-    caution.textContent =
-      'List name should be greater than 1 but not more than 18 characters';
-    caution.style.color = 'rgb(255, 107, 107)';
-    addListBtn.disabled = true;
-    addListBtn.classList.remove('good');
-  } else {
-    caution.textContent = 'Valid List Name';
-    caution.style.color = 'green';
-    addListBtn.disabled = false;
-    addListBtn.classList.add('good');
-  }
+  checkTextValid(e, caution1, addListBtn, 1, 18);
 });
 
 // Appending List item into lists Array
@@ -176,10 +187,13 @@ addListBtn.addEventListener('click', function (e) {
   lists.push({
     [capitalize(listInput.value)]: [
       {
-        task: '',
-        date: new Date(),
+        task: 'Read',
+        taskDescription:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem',
+        date: Date.now(),
         status: 'none',
         completed: false,
+        archived: false,
       },
     ],
   });
@@ -187,11 +201,7 @@ addListBtn.addEventListener('click', function (e) {
   listInput.value = '';
 
   // Reset caution text to default
-  caution.textContent =
-    'List name should be greater than 1 but not more than 18 characters';
-  caution.style.color = 'rgb(255, 107, 107)';
-  addListBtn.disabled = true;
-  addListBtn.classList.remove('good');
+  checkTextValid(e, caution1, addListBtn, 1, 18);
 
   // close modal
   closeModal(e, modalList, overlay1);

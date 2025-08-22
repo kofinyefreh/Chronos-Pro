@@ -139,10 +139,10 @@ main {
   font-weight: 500;
   font-size: 0.95rem;
   font: #333;
-  cursor: pointer;
   border: 2px solid #c5c5c5;
   font-weight: 400;
   border-radius: 15px;
+  cursor: default;
 }
 .right-panel .tabs .tab:hover {
   background-color: #dbdbdb;
@@ -203,6 +203,7 @@ main {
   align-items: center;
   padding: 0.5rem 0;
   padding: 1.5rem 1.5rem;
+  cursor: default;
 }
 .right-panel .display--tasks .task--1 {
   border-bottom: 1px solid #c5c5c5;
@@ -314,7 +315,8 @@ main {
   color: #333333;
 }
 
-.modal-list-content input {
+.modal-list-content input,
+.modal-task-content input {
   outline: none;
   width: 100%;
   padding: 0.2rem;
@@ -326,7 +328,8 @@ main {
 .modal-list-content input:focus {
   border-bottom: 1px solid #7789ff;
 }
-.modal-list-content .add-list-btn {
+.modal-list-content .add-list-btn,
+.modal-task-content .add-task-btn {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
@@ -345,7 +348,9 @@ main {
   background-color: #7789ff;
 }
 
-.modal-list-content .caution {
+.modal-list-content .caution1,
+.modal-task-content .inputs .caution2,
+.modal-task-content .inputs .caution3 {
   font-size: 10px;
   margin-bottom: 1rem;
   padding-left: 0.2rem;
@@ -411,15 +416,6 @@ main {
   gap: 1rem;
 }
 
-.modal-task-content input {
-  outline: none;
-  width: 100%;
-  padding: 0.5rem;
-  border: none;
-  border-bottom: 1px solid #c5c5c5;
-  margin-bottom: 1rem;
-  font-size: medium;
-}
 .modal-task-content input:focus {
   border-bottom: 1px solid #7789ff;
 }
@@ -434,19 +430,6 @@ main {
 
 .modal-task-content textarea:focus {
   border: 1px solid #7789ff;
-}
-
-.modal-task-content .add-task-btn {
-  width: 100%;
-  padding: 0.8rem;
-  font-size: 1rem;
-  background-color: #435bff;
-  color: #ffffff;
-  margin-top: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s;
 }
 
 .modal-task-content .good {
