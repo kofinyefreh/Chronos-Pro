@@ -18,7 +18,10 @@ const addTaskBtn = document.querySelector('.add-task-btn');
 const [caution1, caution2, caution3] = document.querySelectorAll('.caution');
 const listItem = document.querySelector('.item');
 const listCategories = document.querySelector('.categories');
+const tabSection = document.querySelector('.tabs');
+const tabs = document.querySelectorAll('.tab');
 const displayTasks = document.querySelector('.display--tasks');
+const taskOpen = document.querySelector('.task-open');
 
 //////////////////////////////////////////////////////////
 //  Global variables
@@ -187,11 +190,11 @@ const renderTasks = function () {
             <div class="task">
               <div class="task-title">
                 <span><i class="fa-regular fa-circle"></i></span>
-                <p>${item.task}</p>
+                <p class="heading">${item.task}</p>
               </div>
               <div class="date"> ${new Date(item.date)} </div>
             </div>
-            <div class="task-open">
+            <div class="task-open close">
               <p class="task-description">
                   ${item.taskDescription}
               </p>
@@ -321,4 +324,15 @@ addTaskBtn.addEventListener('click', function (e) {
   validTask(e);
   closeModal(e, modalTask, overlay2);
   renderTasks();
+});
+
+// Tab selection functionality
+const resetTabs = function () {
+  tabs.forEach((item, index) => item.classList.remove('selected'));
+};
+
+tabSection.addEventListener('click', function (e) {
+  if (!e.target.classList.contains('tab')) return;
+  resetTabs();
+  e.target.classList.add('selected');
 });

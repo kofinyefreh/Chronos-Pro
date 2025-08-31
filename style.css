@@ -214,6 +214,9 @@ main {
   align-items: center;
   justify-content: center;
   margin-left: 3.6rem;
+}
+
+.close {
   display: none;
 }
 
