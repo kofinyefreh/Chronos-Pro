@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chronos App</title>
+    <title>Chronos Plus | Become 100% productive</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -18,105 +18,136 @@
     />
     <script src="script.js" defer></script>
   </head>
+
   <body>
     <main>
-      <!-- Left panel of application -->
+      <!-- Left Panel of Application -->
+
       <section class="left-panel">
         <h1 class="title">Chronos <span>Plus</span></h1>
+
         <div class="categories">
           <h3 class="item item--0 selected">All Lists</h3>
         </div>
 
         <!-- Button to add new list -->
-        <div class="list-btn">
+        <button class="list-btn">
           <p>Add New List +</p>
-        </div>
+        </button>
       </section>
 
       <!-- Right panel of the application -->
       <section class="right-panel">
-        <div>
-          <!-- Tasks tabs section -->
-          <div class="top-section">
-            <div class="tabs">
-              <p class="tab tab-all selected">All Tasks</p>
-              <p class="tab tab-all">Pending</p>
-              <p class="tab tab-all">Completed</p>
-              <p class="tab tab-all">Archived</p>
-            </div>
-            <div class="task-btn">
-              <span><i class="fa-solid fa-plus"></i></span>
-              <p>Add Task</p>
-            </div>
+        <!-- Tasks tabs section -->
+        <div class="top-section">
+          <div class="tabs">
+            <p class="tab selected">All Tasks</p>
+            <p class="tab">Pending</p>
+            <p class="tab">Completed</p>
+            <p class="tab">Archived</p>
           </div>
+          <div class="task-btn">
+            <span><i class="fa-solid fa-plus"></i></span>
+            <p>Add Task</p>
+          </div>
+        </div>
 
-          <!-- Display actual task -->
-          <div class="display--tasks">
-
-            <div class="task--1">
-              <div class="task">
-                <div class="task-title">
-                  <span><i class="fa-regular fa-circle"></i></span>
-                  <p>Complete task one</p>
-                </div>
-                <div class="date">Today</div>
+        <!-- Display actual task -->
+        <div class="display--tasks">
+          <div class="task--1">
+            <div class="task">
+              <div class="task-title">
+                <span><i class="fa-regular fa-circle"></i></span>
+                <p>Code three hours today and refactor code</p>
               </div>
-              <div class="task-open">
-                <p class="task-description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse 
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse 
-                </p>
-                <!-- option buttons -->
-                <div class="options">
-                  <div class="button edit">
-                    <p>Edit                     <i class="fa-regular fa-pen-to-square" title="Edit Task"></i ></p>
-                  </div>
-                  <div class="button archive">
-                    <p>Archive                     <i class="fa-solid fa-box-archive"></i></p>
-                  </div>
-                  <div class="button delete">
-                    <p>Delete                     <i class="fa-solid fa-trash"></i></p>
-                  </div>
+              <div class="date">Today</div>
+            </div>
+            <div class="task-open">
+              <p class="task-description">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusantium saepe esse Loremdddd ipsum dolor sit amet
+                consectetur adipisicing elit. Accusantium saepe esseadipisicing
+                elit. Accusantium saepe esseadipisicing elit. Accusantium saepe
+                esse
+              </p>
+              <!-- option buttons -->
+              <div class="options">
+                <div class="button edit">
+                  <i class="fa-solid fa-pencil"></i>
                 </div>
+
+                <div class="button archive">
+                  <i class="fa-solid fa-box-archive" title="Archive"></i>
+                </div>
+
+                <div class="button delete">
+                  <i class="fa-regular fa-trash-can"></i>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
       </section>
 
+      <!-- MODAL LISTS -->
       <!-- Adding new list modal window -->
-      <section class="add-list-item-modal hidden">
-        <div class="modal-list-content">
+      <section class="modal add-list-item-modal hidden">
+        <div class="content modal-list-content">
           <h2>Add New List</h2>
-          <span><i class="fa-regular fa-circle-xmark close1"></i></span>
-<form action="">
-                        <input class="list--input" type="text" placeholder="Enter list name"  />
-                        <p class="caution1">Input should be greater than 1 but not more than 18 characters</p>
+          <span><i class="fa-regular fa-circle-xmark close"></i></span>
 
-          <button class="add-list-btn" disabled >Add List</button>
-</form>
+          <form action="">
+            <input
+              class="list--input"
+              type="text"
+              placeholder="Enter list name"
+            />
+            <p class="caution">
+              Input should be greater than 1 and less than 24 characters
+            </p>
+            <button class="add-list-btn" disabled>Add List</button>
+          </form>
         </div>
-        <div class="overlay1 hidden"></div>
+
+        <div class="overlay"></div>
       </section>
 
-            <!-- Adding new task modal window -->
-                   <section class="add-task-item-modal hidden">
-        <div class="modal-task-content">
+      <!-- Adding new task modal window -->
+      <section class="modal add-task-item-modal hidden">
+        <div class="content modal-task-content">
           <h2>Add New Task</h2>
-          <span><i class="fa-regular fa-circle-xmark close2"></i></span>
-          <div class="inputs">
-            <div>
-                <input class="task--input--title" type="text" placeholder="Enter task title" />
-                <p class="caution2">Input should be greater than 1 but not more than 30 characters</p>
+          <span><i class="fa-regular fa-circle-xmark close"></i></span>
+
+          <form action="">
+            <div class="inputs">
+              <div>
+                <input
+                  class="task--input--title"
+                  type="text"
+                  placeholder="Enter task title"
+                />
+                <p class="caution">
+                  Input should be greater than 1 but not more than 30 characters
+                </p>
+              </div>
+              <div>
+                <textarea
+                  class="task--input--description"
+                  type="text"
+                  placeholder="Enter task description"
+                  rows="10"
+                  disabled
+                ></textarea>
+                <p class="caution">
+                  Input should be greater than 1 but not more than 500
+                  characters
+                </p>
+              </div>
             </div>
-            <div >
-              <textarea class="task--input--description" type="text" placeholder="Enter task description" rows="10" disabled></textarea>
-              <p class="caution3">Input should be greater than 1 but not more than 300 characters</p>
-          </div>
-            </div>
-          <button class="add-task-btn disabled">Add List</button>
+            <button class="add-task-btn disabled">Add List</button>
+          </form>
         </div>
-                <div class="overlay2"></div>
+        <div class="overlay"></div>
       </section>
     </main>
   </body>
