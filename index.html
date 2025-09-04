@@ -26,9 +26,7 @@
       <section class="left-panel">
         <h1 class="title">Chronos <span>Plus</span></h1>
 
-        <div class="categories">
-          <h3 class="item item--0 selected">All Lists</h3>
-        </div>
+        <div class="categories"></div>
 
         <!-- Button to add new list -->
         <button class="list-btn">
@@ -54,35 +52,19 @@
 
         <!-- Display actual task -->
         <div class="display--tasks">
-          <div class="task--1">
-            <div class="task">
-              <div class="task-title heading">
-                <span><i class="fa-regular fa-circle"></i></span>
-                <p>Code three hours today and refactor code</p>
-              </div>
-              <div class="date">Today</div>
+          <div class="task task--1">
+            <div class="task-title">
+              <span><i class="fa-regular fa-circle"></i></span>
+              <p class="heading">Code three hours today and refactor code</p>
             </div>
-            <div class="task-open close">
-              <p class="task-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusantium saepe esse Loremdddd ipsum dolor sit amet
-                consectetur adipisicing elit. Accusantium saepe esseadipisicing
-                elit. Accusantium saepe esseadipisicing elit. Accusantium saepe
-                esse
-              </p>
+            <div class="right">
+              <p class="date">Today</p>
+
               <!-- option buttons -->
               <div class="options">
-                <div class="button edit">
-                  <i class="fa-solid fa-pencil"></i>
-                </div>
-
-                <div class="button archive">
-                  <i class="fa-solid fa-box-archive" title="Archive"></i>
-                </div>
-
-                <div class="button delete">
-                  <i class="fa-regular fa-trash-can"></i>
-                </div>
+                <button class="edit"></button>
+                <button class="archive"></button>
+                <button class="delete"></button>
               </div>
             </div>
           </div>
@@ -130,17 +112,29 @@
                   Input should be greater than 1 but not more than 30 characters
                 </p>
               </div>
+            </div>
+            <button class="add-task-btn disabled">Add List</button>
+          </form>
+        </div>
+        <div class="overlay"></div>
+      </section>
+
+      <!-- Adding new task modal window -->
+      <section class="modal add-task-item-modal hidden">
+        <div class="content modal-task-content">
+          <h2>Add New Task</h2>
+          <span><i class="fa-regular fa-circle-xmark close"></i></span>
+
+          <form action="">
+            <div class="inputs">
               <div>
-                <textarea
-                  class="task--input--description"
+                <input
+                  class="task--input--title"
                   type="text"
-                  placeholder="Enter task description"
-                  rows="10"
-                  disabled
-                ></textarea>
+                  placeholder="Enter task title"
+                />
                 <p class="caution">
-                  Input should be greater than 1 but not more than 500
-                  characters
+                  Input should be greater than 1 but not more than 30 characters
                 </p>
               </div>
             </div>

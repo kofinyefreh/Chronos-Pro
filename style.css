@@ -61,16 +61,19 @@ main {
   font-size: 0.8rem;
   cursor: pointer;
   color: #333333;
+  margin: 0 1rem;
 }
 
 .item {
-  padding: 0.7rem 1.4rem;
-  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
 }
 
-.item:hover {
-  background-color: #dbdbdb;
-  border-radius: 8px;
+.item p {
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .item.selected {
@@ -153,7 +156,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid #435bff; */
   border-radius: 100px;
   text-align: center;
   transition: all 0.3s;
@@ -190,10 +192,6 @@ main {
   align-items: center;
   padding: 1rem;
   cursor: default;
-  /* border-bottom: 1px solid red; */
-}
-.right-panel .display--tasks .task--1 {
-  border-bottom: 1px solid #c5c5c5;
 }
 
 .right-panel .task-title {
@@ -203,60 +201,48 @@ main {
   gap: 0.7rem;
   font-size: 17px;
 }
+
 .date {
   color: #686868;
   font-size: 0.85rem;
 }
 
-.task-open {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-left: 3.6rem;
-}
-
-.close {
-  display: none;
-}
-
-.task-description {
-  color: #333;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.6;
-}
-
 .options {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 5px;
-  margin: 8px 0;
-  cursor: pointer;
-  font-size: 10px;
-  width: 100%;
-}
-
-.button {
-  padding: 5px;
+  gap: 6px;
+  padding: 4px;
   border-radius: 500px;
-  color: #fff;
 }
 
-.edit {
-  background-color: #2845ff;
+.options button {
+  border: none;
+  border: 1px solid #999;
+  width: 11px;
+  height: 11px;
+  border-radius: 500px;
 }
 
-.archive {
-  background-color: #555555;
+.right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.delete {
-  background-color: rgb(226, 0, 0);
+.edit:hover {
+  background-color: #435bff;
+  border-color: #435bff;
+  transform: scale(1.5);
 }
-
+.archive:hover {
+  background-color: #999;
+  border-color: #999;
+  transform: scale(1.5);
+}
+.delete:hover {
+  background-color: red;
+  border-color: red;
+  transform: scale(1.5);
+}
 /* MODAL LISTS */
 
 /* Generic Components Styling */

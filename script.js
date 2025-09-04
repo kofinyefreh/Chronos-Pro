@@ -1,7 +1,7 @@
 'use strict';
 
 ////////////////////////////////////////////////////////////
-//  Selectors
+//  --------------------------------------------------- Selectors
 const listBtn = document.querySelector('.list-btn');
 const taskBtn = document.querySelector('.task-btn');
 const modalList = document.querySelector('.add-list-item-modal');
@@ -10,12 +10,9 @@ const [overlay1, overlay2] = document.querySelectorAll('.overlay');
 const [closeIcon1, closeIcon2] = document.querySelectorAll('.close');
 const listInput = document.querySelector('.list--input');
 const taskInputTitle = document.querySelector('.task--input--title');
-const taskInputDescription = document.querySelector(
-  '.task--input--description'
-);
 const addListBtn = document.querySelector('.add-list-btn');
 const addTaskBtn = document.querySelector('.add-task-btn');
-const [caution1, caution2, caution3] = document.querySelectorAll('.caution');
+const [caution1, caution2] = document.querySelectorAll('.caution');
 const listItem = document.querySelector('.item');
 const listCategories = document.querySelector('.categories');
 const tabSection = document.querySelector('.tabs');
@@ -24,15 +21,12 @@ const displayTasks = document.querySelector('.display--tasks');
 const taskOpen = document.querySelector('.task-open');
 
 //////////////////////////////////////////////////////////
-//  Global variables
+//  --------------------------------------------------- Global variables
 const lists = [
-  { 'All Lists': [123] },
   {
     School: [
       {
         task: 'Read',
-        taskDescription:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?',
         date: Date.now(),
         status: 'none',
         completed: false,
@@ -40,8 +34,27 @@ const lists = [
       },
       {
         task: 'Sweep',
-        taskDescription:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?',
+        date: Date.now(),
+        status: 'none',
+        completed: false,
+        archived: false,
+      },
+      {
+        task: 'Bath',
+        date: Date.now(),
+        status: 'none',
+        completed: false,
+        archived: false,
+      },
+      {
+        task: 'Eat',
+        date: Date.now(),
+        status: 'none',
+        completed: false,
+        archived: false,
+      },
+      {
+        task: 'Code',
         date: Date.now(),
         status: 'none',
         completed: false,
@@ -53,8 +66,6 @@ const lists = [
     Home: [
       {
         task: 'Eat',
-        taskDescription:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe esse incidunt, error quidem dignissimos vero recusandae pariatur exercitationem! Aliquam dicta nisi reprehenderit ab sit amet harum voluptate consequuntur, mollitia, necessitatibus inventore tenetur praesentium quia eum? Praesentium modi fugit cupiditate ad error doloribus nemo at accusamus, ut nihil recusandae atque?',
         date: Date.now(),
         status: 'none',
         completed: false,
@@ -65,11 +76,12 @@ const lists = [
 ];
 
 let titles;
-let clicked = document.querySelector('.item--0');
-const none = 'none';
+let clicked = Object.keys(lists.at(0)).at(0);
+console.log(clicked);
+// = document.querySelector('.item--0');
 
 /////////////////////////////////////////////////////////////
-// Global Functions
+// --------------------------------------------------- Global Functions
 
 // Add List modal
 // list modal close and open functions
@@ -130,25 +142,17 @@ const checkTextValid = function (
   }
 };
 
-// Check input validity function for lists
+// Check input validity function for Tasks
 const validTask = function (e) {
   const value = e.target.value.trim();
   if (value.length === 0 || value.length > 50) {
     caution2.textContent = `Input should be greater than 1 but not more than 50 characters`;
     caution2.style.color = 'rgb(255, 107, 107)';
-    taskInputDescription.disabled = true;
     addTaskBtn.disabled = true;
     addTaskBtn.classList.remove('good');
   } else {
     caution2.textContent = 'Valid Text';
     caution2.style.color = 'green';
-    taskInputDescription.disabled = false;
-  }
-  if (
-    taskInputDescription.value.length >= 1 &&
-    taskInputDescription.value.length <= 500 &&
-    value.length > 0
-  ) {
     addTaskBtn.disabled = false;
     addTaskBtn.classList.add('good');
   }
@@ -157,6 +161,7 @@ const validTask = function (e) {
 // Rendering lists function
 const renderlists = function () {
   titles = [];
+  console.log(titles);
   lists.forEach((_, index) => {
     titles.push(...Object.keys(lists.at(index)));
   });
@@ -166,9 +171,10 @@ const renderlists = function () {
   listCategories.innerHTML = '';
   titles.forEach((item, index) => {
     const h3 = document.createElement('h3');
+
     h3.className = `${
-      clicked.textContent === item
-        ? `item item--${index} selected`
+      index === 0
+        ? `item item--${index} selected` /*&& renderTasks()*/
         : `item item--${index}`
     }`;
     h3.textContent = item;
@@ -176,51 +182,38 @@ const renderlists = function () {
   });
 };
 
-// Render tasks function
-const renderTasks = function () {
-  const clickedValue = clicked.textContent;
-
-  const found = lists.find(item => Object.keys(item).at(0) === clickedValue);
+// ------------------------------------------------ Render tasks function
+function renderTasks() {
+  const found = lists.find(item => Object.keys(item).at(0) === clicked);
+  console.log(found);
 
   displayTasks.innerHTML = '';
-  found[clickedValue].forEach(function (item, index) {
+  found[clicked].forEach(function (item, index) {
     const task = document.createElement('div');
     task.innerHTML = `
-    <div class="task--${index}">
-            <div class="task">
-              <div class="task-title">
-                <span><i class="fa-regular fa-circle"></i></span>
-                <p class="heading">${item.task}</p>
-              </div>
-              <div class="date"> ${new Date(item.date)} </div>
+              <div class="task task--${index}">
+            <div class="task-title">
+              <span><i class="fa-regular fa-circle"></i></span>
+              <p class="heading">${item.task}</p>
             </div>
-            <div class="task-open close">
-              <p class="task-description">
-                  ${item.taskDescription}
-              </p>
+            <div class="right">
+              <p class="date">${new Date(item.date)}</p>
 
               <!-- option buttons -->
               <div class="options">
-                <div class="button edit">
-                  <i class="fa-regular fa-pen-to-square" title="Edit"></i>
-                </div>
-
-                <div class="button archive">
-                  <i class="fa-solid fa-box-archive" title="Archive"></i>
-                </div>
-
-                <div class="button delete">
-                  <i class="fa-solid fa-trash" title="Delete"></i>
-                </div>
+                <button class="edit"></button>
+                <button class="archive"></button>
+                <button class="delete"></button>
               </div>
             </div>
           </div>
     `;
     displayTasks.appendChild(task);
   });
-};
+}
+renderTasks();
 
-/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 // Modal list event handlers
 listBtn.addEventListener('click', function (e) {
   openModal(e, modalList, overlay1, listInput);
@@ -257,7 +250,7 @@ listInput.addEventListener('input', function (e) {
   checkTextValid(e, caution1, addListBtn, 1, 24);
 });
 
-// Appending List item into lists Array
+//--------------------------------- Appending List item into lists Array
 addListBtn.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -282,24 +275,22 @@ addListBtn.addEventListener('click', function (e) {
   renderTasks();
 });
 
-// Seleting list type
+// --------------------------------------------------- Seleting list type
 listCategories.addEventListener('click', function (e) {
   if (!e.target.classList.contains('item')) return;
+
   const allLists = document.querySelectorAll('.item');
   [...allLists].forEach(item => item.classList.remove('selected'));
   e.target.classList.add('selected');
-  clicked = e.target;
+  clicked = e.target.textContent;
+  console.log(clicked);
   renderTasks();
 });
 
 // Add Task caution text and button events
 taskInputTitle.addEventListener('input', validTask);
 
-taskInputDescription.addEventListener('input', function (e) {
-  checkTextValid(e, caution3, addTaskBtn, 1, 500);
-});
-
-// Add task logic
+// --------------------------------------------------- Add task logic
 addTaskBtn.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -307,26 +298,22 @@ addTaskBtn.addEventListener('click', function (e) {
   const listType = clicked.textContent;
   if (listType === 'All Lists') return;
 
-  const clickedValue = clicked.textContent;
-
-  const found = lists.find(item => Object.keys(item).at(0) === clickedValue);
-  found[clickedValue].unshift({
+  const found = lists.find(item => Object.keys(item).at(0) === clicked);
+  found[clicked].unshift({
     task: taskInputTitle.value.trim(),
-    taskDescription: taskInputDescription.value.trim(),
     date: Date.now(),
     status: 'none',
     completed: false,
     archived: false,
   });
 
-  taskInputDescription.value = '';
   taskInputTitle.value = '';
   validTask(e);
   closeModal(e, modalTask, overlay2);
   renderTasks();
 });
 
-// Tab selection functionality
+// ------------------------------------- Tab color-selection functionality
 const resetTabs = function () {
   tabs.forEach((item, index) => item.classList.remove('selected'));
 };
