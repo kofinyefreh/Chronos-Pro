@@ -106,7 +106,7 @@
                 <input
                   class="task--input--title"
                   type="text"
-                  placeholder="Enter task title"
+                  placeholder="Enter Task"
                 />
                 <p class="caution">
                   Input should be greater than 1 but not more than 30 characters
@@ -119,26 +119,22 @@
         <div class="overlay"></div>
       </section>
 
-      <!-- Adding new task modal window -->
-      <section class="modal add-task-item-modal hidden">
+      <!-- Editing new task modal window -->
+      <section class="modal edit-task hidden">
         <div class="content modal-task-content">
-          <h2>Add New Task</h2>
+          <h2>Edit Task</h2>
           <span><i class="fa-regular fa-circle-xmark close"></i></span>
 
           <form action="">
             <div class="inputs">
               <div>
-                <input
-                  class="task--input--title"
-                  type="text"
-                  placeholder="Enter task title"
-                />
+                <input class="edit-input" type="text" placeholder="Edit Task" />
                 <p class="caution">
                   Input should be greater than 1 but not more than 30 characters
                 </p>
               </div>
             </div>
-            <button class="add-task-btn disabled">Add List</button>
+            <button class="update-btn disabled">Update</button>
           </form>
         </div>
         <div class="overlay"></div>

@@ -6,19 +6,24 @@ const listBtn = document.querySelector('.list-btn');
 const taskBtn = document.querySelector('.task-btn');
 const modalList = document.querySelector('.add-list-item-modal');
 const modalTask = document.querySelector('.add-task-item-modal');
-const [overlay1, overlay2] = document.querySelectorAll('.overlay');
-const [closeIcon1, closeIcon2] = document.querySelectorAll('.close');
+const [overlay1, overlay2, overlay3] = document.querySelectorAll('.overlay');
+const [closeIcon1, closeIcon2, closeIcon3] =
+  document.querySelectorAll('.close');
 const listInput = document.querySelector('.list--input');
 const taskInputTitle = document.querySelector('.task--input--title');
 const addListBtn = document.querySelector('.add-list-btn');
 const addTaskBtn = document.querySelector('.add-task-btn');
-const [caution1, caution2] = document.querySelectorAll('.caution');
+const [caution1, caution2, caution3] = document.querySelectorAll('.caution');
 const listItem = document.querySelector('.item');
 const listCategories = document.querySelector('.categories');
 const tabSection = document.querySelector('.tabs');
 const tabs = document.querySelectorAll('.tab');
 const displayTasks = document.querySelector('.display--tasks');
 const taskOpen = document.querySelector('.task-open');
+const openTaskEdit = document.querySelector('.edit');
+const editTask = document.querySelector('.edit-task');
+const editInput = document.querySelector('.edit-input');
+const updateBtn = document.querySelector('.update-btn');
 
 //////////////////////////////////////////////////////////
 //  --------------------------------------------------- Global variables
@@ -143,18 +148,18 @@ const checkTextValid = function (
 };
 
 // Check input validity function for Tasks
-const validTask = function (e) {
+const validTask = function (e, cautionType, buttonType) {
   const value = e.target.value.trim();
   if (value.length === 0 || value.length > 50) {
-    caution2.textContent = `Input should be greater than 1 but not more than 50 characters`;
-    caution2.style.color = 'rgb(255, 107, 107)';
-    addTaskBtn.disabled = true;
-    addTaskBtn.classList.remove('good');
+    cautionType.textContent = `Input should be greater than 1 but not more than 50 characters`;
+    cautionType.style.color = 'rgb(255, 107, 107)';
+    buttonType.disabled = true;
+    buttonType.classList.remove('good');
   } else {
-    caution2.textContent = 'Valid Text';
-    caution2.style.color = 'green';
-    addTaskBtn.disabled = false;
-    addTaskBtn.classList.add('good');
+    cautionType.textContent = 'Valid Text';
+    cautionType.style.color = 'green';
+    buttonType.disabled = false;
+    buttonType.classList.add('good');
   }
 };
 
@@ -275,7 +280,7 @@ addListBtn.addEventListener('click', function (e) {
   renderTasks();
 });
 
-// --------------------------------------------------- Seleting list type
+// --------------------------------------------------- Selecting list type
 listCategories.addEventListener('click', function (e) {
   if (!e.target.classList.contains('item')) return;
 
@@ -288,7 +293,9 @@ listCategories.addEventListener('click', function (e) {
 });
 
 // Add Task caution text and button events
-taskInputTitle.addEventListener('input', validTask);
+taskInputTitle.addEventListener('input', function (e) {
+  validTask(e, caution2, addTaskBtn);
+});
 
 // --------------------------------------------------- Add task logic
 addTaskBtn.addEventListener('click', function (e) {
@@ -308,10 +315,47 @@ addTaskBtn.addEventListener('click', function (e) {
   });
 
   taskInputTitle.value = '';
-  validTask(e);
+  validTask(e, caution2, addTaskBtn);
   closeModal(e, modalTask, overlay2);
   renderTasks();
 });
+
+// -------------------------------------- Edit task functionality
+displayTasks.addEventListener('click', function (e) {
+  console.log(e.target);
+  if (!e.target.classList.contains('edit')) return;
+  console.log('works');
+
+  // open edit modal
+  openModal(e, editTask, overlay3, editInput);
+  const task = e.target.closest('.task');
+  const val = task.querySelector('.heading').textContent;
+  console.log(val);
+
+  editInput.value = val;
+  caution3.textContent = 'Valid Text';
+  caution3.style.color = 'green';
+  updateBtn.disabled = false;
+  updateBtn.classList.add('good');
+});
+
+// Close edit modal
+overlay3.addEventListener('click', function (e) {
+  closeModal(e, editTask, overlay3);
+});
+closeIcon3.addEventListener('click', function (e) {
+  closeModal(e, editTask, overlay3);
+});
+document.addEventListener('keydown', function (e) {
+  keyCloseModal(e, editTask, overlay3);
+});
+
+// edit check text validity
+editInput.addEventListener('input', function (e) {
+  validTask(e, caution3, updateBtn);
+});
+
+// Udate edit task input with edit value
 
 // ------------------------------------- Tab color-selection functionality
 const resetTabs = function () {

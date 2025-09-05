@@ -58,7 +58,7 @@ main {
   overflow-y: auto;
   scrollbar-width: thin;
   font-weight: 600;
-  font-size: 0.8rem;
+  font-size: 14px;
   cursor: pointer;
   color: #333333;
   margin: 0 1rem;
@@ -325,7 +325,8 @@ main {
 /* Custom List Modal Styling */
 
 .add-list-btn,
-.add-task-btn {
+.add-task-btn,
+.update-btn {
   width: 100%;
   padding: 0.8rem;
   font-size: 1rem;
@@ -364,3 +365,7 @@ main {
 .good:hover {
   background-color: #7789ff;
 }
+
+/* .modal.edit-task {
+  display: block;
+} */
